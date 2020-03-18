@@ -11,5 +11,9 @@ class Viewer
   def self.all
     @@all
   end
+
+  def review
+
+  end
   
 end
