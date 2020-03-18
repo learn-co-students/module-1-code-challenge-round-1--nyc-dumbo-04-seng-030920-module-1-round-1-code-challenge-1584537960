@@ -24,11 +24,14 @@ class Viewer
     reviewed_movies.include?(movie)
   end
 
+  def find_movie(movie)
+    reviews.select{|review| review.movie == movie}.first
+  end
+
   def rate_movie(movie, rating_num)
     if reviewed_movie?(movie) 
-      review_of_movie = reviews.select{|review| review.movie == movie}
-      review_of_movie.first.rating = rating_num
-      return review_of_movie.first
+      find_movie(movie).rating = rating_num
+      return find_movie(movie)
     else
       Review.new(self, movie, rating_num)
     end
