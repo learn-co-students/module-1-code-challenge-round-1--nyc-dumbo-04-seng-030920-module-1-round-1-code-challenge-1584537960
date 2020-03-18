@@ -28,7 +28,7 @@ class Viewer
     if reviewed_movie?(movie) 
       review_of_movie = reviews.select{|review| review.movie == movie}
       review_of_movie.first.rating = rating_num
-      return review_of_movie
+      return review_of_movie.first
     else
       Review.new(self, movie, rating_num)
     end
